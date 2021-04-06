@@ -13,23 +13,19 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-    private static Scene scene;
-
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"));
-        stage.setScene(scene);
+        FXMLLoader loader;
+        loader = new FXMLLoader(getClass().getClassLoader().getResource("org/example/primary.fxml"));
+        Parent root = loader.load();
+        Scene sc = new Scene(root);
+        PrimaryController pc = loader.getController();
+        pc.setScene(sc);
+        stage.setScene(sc);
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
 
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
 
     public static void main(String[] args) {
         launch();

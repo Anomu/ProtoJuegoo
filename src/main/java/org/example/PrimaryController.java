@@ -42,15 +42,13 @@ public class PrimaryController implements Initializable {
         combatShip.render(gc);
     }
 
+
     public void setScene(Scene sc) {
         scene = sc;
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                combatShip.clear(gc);
-                combatShip.move(keyEvent.getCode().toString());
-                combatShip.render(gc);
-            }
+        scene.setOnKeyPressed(keyEvent -> {
+            combatShip.clear(gc);
+            combatShip.move(keyEvent.getCode().toString());
+            combatShip.render(gc);
         });
     }
 }
