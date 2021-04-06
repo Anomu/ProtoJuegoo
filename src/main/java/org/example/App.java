@@ -22,6 +22,10 @@ public class App extends Application {
         PrimaryController pc = loader.getController();
         pc.setScene(sc);
         stage.setScene(sc);
+
+        stage.setHeight(600); //revisar
+        stage.setWidth(900); //revisar
+
         stage.show();
     }
 

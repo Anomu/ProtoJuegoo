@@ -6,8 +6,8 @@ public class CombatShip extends Sprite{
 
     public CombatShip(Image image) {
         super(image);
-        setPosY(425);
-        setPosX(350);
+        setPosY(600-getWidth());
+        setPosX(900/2);
     }
 
     @Override
