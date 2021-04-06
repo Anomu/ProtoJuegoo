@@ -37,7 +37,7 @@ public class PrimaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        combatShip = new CombatShip(new Image("PNGs/combatShip.png"));
+        combatShip = new CombatShip(new Image("PNG/combat_ship.png"));
         gc = mainCanvas.getGraphicsContext2D();
         combatShip.render(gc);
     }
