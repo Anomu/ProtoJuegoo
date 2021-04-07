@@ -23,8 +23,8 @@ public class App extends Application {
         pc.setScene(sc);
         stage.setScene(sc);
 
-        stage.setHeight(600); //revisar
-        stage.setWidth(900); //revisar
+        //stage.setHeight(600); //revisar
+        //stage.setWidth(900); //revisar
 
         stage.show();
     }
