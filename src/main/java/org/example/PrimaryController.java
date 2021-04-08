@@ -20,7 +20,7 @@ public class PrimaryController implements Initializable {
     private Scene scene;
     private GraphicsContext gc;
     private CombatShip combatShip;
-    private EnemyShip enemyShip, enemyShip1, enemyShip2, enemyShip3, enemyShip4;
+    private ArrayList<EnemyShip> enemyShips = new ArrayList<>();
     //list de bullets
     private ArrayList<Bullet> bullets = new ArrayList<>();
     private Image space;
@@ -42,16 +42,21 @@ public class PrimaryController implements Initializable {
                 for (int i = 0; i < bullets.size(); i++) {
                     bullets.get(i).move();
                     bullets.get(i).render(gc);
-                    if(bullets.get(i).getBoundry().intersects(enemyShip.getBoundry())){
+                    if(bullets.get(i).getBoundry().intersects(enemyShips.get(0).getBoundry())){
+                        //enemyShips.remove(0);
                         System.out.println("hit");
-                    } else if(bullets.get(i).getBoundry().intersects(enemyShip1.getBoundry())){
+                    } else if(bullets.get(i).getBoundry().intersects(enemyShips.get(1).getBoundry())){
+                        //enemyShips.remove(1);
                         System.out.println("hit");
-                    } else if(bullets.get(i).getBoundry().intersects(enemyShip2.getBoundry())){
+                    } else if(bullets.get(i).getBoundry().intersects(enemyShips.get(2).getBoundry())){
                         System.out.println("hit");
-                    } else if(bullets.get(i).getBoundry().intersects(enemyShip3.getBoundry())){
+                        //enemyShips.remove(2);
+                    } else if(bullets.get(i).getBoundry().intersects(enemyShips.get(3).getBoundry())){
                         System.out.println("hit");
-                    } else if(bullets.get(i).getBoundry().intersects(enemyShip4.getBoundry())){
+                        //enemyShips.remove(3);
+                    } else if(bullets.get(i).getBoundry().intersects(enemyShips.get(4).getBoundry())){
                         System.out.println("hit");
+                        //enemyShips.remove(4);
                     }
                     if(bullets.get(i).getPosY()<=0){
                         bullets.remove(i);
@@ -62,20 +67,10 @@ public class PrimaryController implements Initializable {
             }
 
             //NPCs
-            enemyShip.move();
-            enemyShip.render(gc);
-
-            enemyShip1.move();
-            enemyShip1.render(gc);
-
-            enemyShip2.move();
-            enemyShip2.render(gc);
-
-            enemyShip3.move();
-            enemyShip3.render(gc);
-
-            enemyShip4.move();
-            enemyShip4.render(gc);
+            for (int i = 0; i < enemyShips.size(); i++) {
+                enemyShips.get(i).move();
+                enemyShips.get(i).render(gc);
+            }
         }
     }));
 
@@ -83,11 +78,11 @@ public class PrimaryController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         space = new Image("PNG/space.jpg");
         combatShip = new CombatShip(new Image("PNG/combat_ship.png"));
-        enemyShip = new EnemyShip(new Image("PNG/enemy_ship.png"), 0,0);
-        enemyShip1 = new EnemyShip(new Image("PNG/enemy_ship.png"), enemyShip.getPosX()+enemyShip.getWidth()+2, 0);
-        enemyShip2 = new EnemyShip(new Image("PNG/enemy_ship.png"), enemyShip1.getPosX()+enemyShip1.getWidth()+2, 0);
-        enemyShip3 = new EnemyShip(new Image("PNG/enemy_ship.png"), enemyShip2.getPosX()+enemyShip2.getWidth()+2, 0);
-        enemyShip4 = new EnemyShip(new Image("PNG/enemy_ship.png"), enemyShip3.getPosX()+enemyShip3.getWidth()+2, 0);
+        int spacing = 0;
+        for (int i = 0; i < 5; i++) {
+            enemyShips.add(new EnemyShip(new Image("PNG/enemy_ship.png"), 0+spacing, 0));
+            spacing = spacing+150;
+        }
         gc = mainCanvas.getGraphicsContext2D();
         combatShip.render(gc);
 
