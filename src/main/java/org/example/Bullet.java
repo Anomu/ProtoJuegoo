@@ -6,9 +6,11 @@ public class Bullet extends Sprite{
 
     private double velY;
 
-    public Bullet(Image image) {
+    public Bullet(Image image, double posX, double posY) {
         super(image);
-        velY = 7.00f;
+        setPosX(posX);
+        setPosY(posY);
+        velY = 3.00f;
     }
 
     @Override

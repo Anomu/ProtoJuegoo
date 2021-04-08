@@ -6,10 +6,10 @@ public class EnemyShip extends Sprite{
     private double velX, velY;
     private int dirX, dirY;
 
-    public EnemyShip(Image image) {
+    public EnemyShip(Image image, double posX, double posY) {
         super(image);
-        setPosY(0+getHeight());
-        setPosX(0);
+        setPosY(posY);
+        setPosX(posX);
         velX = 1.0f;
         velY = 5.0f;
         dirX = 1;
@@ -20,7 +20,7 @@ public class EnemyShip extends Sprite{
     public void move() {
         if(dirX == 1) {
             setPosX(getPosX() + velX);
-            if(getPosX()>=600-getWidth()) {
+            if(getPosX()>=900-getWidth()) {
                 dirX = (-1)*dirX;
                 setPosY(getPosY() + velY);
             }
