@@ -53,13 +53,11 @@ public class PrimaryController implements Initializable {
                             System.out.println("de locos");
                             System.out.println("nave " + j);
                             enemyShips.remove(j);
-
                             bullets.remove(i);
                             break;
 
                         }
                     }
-
                 }
             }
 
