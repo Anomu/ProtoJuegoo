@@ -42,25 +42,22 @@ public class PrimaryController implements Initializable {
                 for (int i = 0; i < bullets.size(); i++) {
                     bullets.get(i).move();
                     bullets.get(i).render(gc);
-                    if(bullets.get(i).getBoundry().intersects(enemyShips.get(0).getBoundry())){
-                        //enemyShips.remove(0);
-                        System.out.println("hit");
-                    } else if(bullets.get(i).getBoundry().intersects(enemyShips.get(1).getBoundry())){
-                        //enemyShips.remove(1);
-                        System.out.println("hit");
-                    } else if(bullets.get(i).getBoundry().intersects(enemyShips.get(2).getBoundry())){
-                        System.out.println("hit");
-                        //enemyShips.remove(2);
-                    } else if(bullets.get(i).getBoundry().intersects(enemyShips.get(3).getBoundry())){
-                        System.out.println("hit");
-                        //enemyShips.remove(3);
-                    } else if(bullets.get(i).getBoundry().intersects(enemyShips.get(4).getBoundry())){
-                        System.out.println("hit");
-                        //enemyShips.remove(4);
-                    }
+
                     if(bullets.get(i).getPosY()<=0){
                         bullets.remove(i);
                         System.out.println("removed");
+                    }
+
+                    for (int j = 0; j < enemyShips.size(); j++) {
+                        if (bullets.get(i).getBoundry().intersects(enemyShips.get(j).getBoundry())) {
+                            System.out.println("de locos");
+                            System.out.println("nave " + j);
+                            enemyShips.remove(j);
+
+                            bullets.remove(i);
+                            break;
+
+                        }
                     }
 
                 }
