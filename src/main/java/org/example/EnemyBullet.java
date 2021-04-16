@@ -2,11 +2,11 @@ package org.example;
 
 import javafx.scene.image.Image;
 
-public class Bullet extends Sprite{
+public class EnemyBullet extends Sprite{
 
     private double velY;
 
-    public Bullet(Image image, double posX, double posY) {
+    public EnemyBullet(Image image, double posX, double posY) {
         super(image);
         setPosX(posX);
         setPosY(posY);
@@ -15,7 +15,7 @@ public class Bullet extends Sprite{
 
     @Override
     public void move(){
-       setPosY(getPosY()-velY);
+       setPosY(getPosY()+velY);
     }
     
 }

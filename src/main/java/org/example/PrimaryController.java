@@ -23,6 +23,7 @@ public class PrimaryController implements Initializable {
     private ArrayList<EnemyShip> enemyShips = new ArrayList<>();
     //list de bullets
     private ArrayList<Bullet> bullets = new ArrayList<>();
+    private ArrayList<EnemyBullet> enemybullets = new ArrayList<>();
     private Image space;
 
     @FXML
@@ -46,6 +47,7 @@ public class PrimaryController implements Initializable {
                     if(bullets.get(i).getPosY()<=0){
                         bullets.remove(i);
                         System.out.println("removed");
+                        break;
                     }
 
                     for (int j = 0; j < enemyShips.size(); j++) {
@@ -66,6 +68,7 @@ public class PrimaryController implements Initializable {
                 enemyShips.get(i).move();
                 enemyShips.get(i).render(gc);
             }
+
         }
     }));
 
@@ -92,10 +95,12 @@ public class PrimaryController implements Initializable {
             if(keyEvent.getCode().toString().equals("SPACE")){
                 //crear nueva bullet y añadir al list
                 bullets.add(new Bullet(new Image("PNG/bullet.png"),
-                        combatShip.getPosX()+ (combatShip.getWidth()/2),
+                        combatShip.getPosX()+ (combatShip.getWidth()/2.65),
                         combatShip.getPosY()));
             }
             System.out.println(keyEvent.getCode().toString());
         });
+
+
     }
 }
