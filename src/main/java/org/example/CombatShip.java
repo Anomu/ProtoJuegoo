@@ -14,10 +14,14 @@ public class CombatShip extends Sprite{
     public void move(String direction){
         switch(direction){
             case "RIGHT":
-                setPosX(getPosX()+4);
+                if (this.getPosX() <= 770) {
+                    setPosX(getPosX() + 4);
+                }
                 break;
             case "LEFT":
-                setPosX(getPosX()-4);
+                if (this.getPosX() >= 0) {
+                    setPosX(getPosX() - 4);
+                }
                 break;
         }
     }

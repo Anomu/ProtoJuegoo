@@ -63,12 +63,34 @@ public class PrimaryController implements Initializable {
                 }
             }
 
+            for (int i = 0; i < enemyShips.size(); i++) {
+                double random = Math.random();
+                System.out.println(random);
+                if(random > 0.9993 && enemybullets.size() <= 2) {
+                    enemybullets.add(new EnemyBullet(new Image("PNG/bullet.png"),
+                            enemyShips.get(i).getPosX() + (enemyShips.get(i).getWidth() / 2.65),
+                            enemyShips.get(i).getPosY()));
+                    System.out.println("genera 1 cosa");
+                }
+            }
+            if (enemybullets.size() > 0) {
+                for (int i = 0; i < enemybullets.size(); i++) {
+                    enemybullets.get(i).move();
+                    enemybullets.get(i).render(gc);
+
+                    if(enemybullets.get(i).getPosY()>= 500){
+                        enemybullets.remove(i);
+                        System.out.println("removed");
+                        break;
+                    }
+                }
+            }
+
             //NPCs
             for (int i = 0; i < enemyShips.size(); i++) {
                 enemyShips.get(i).move();
                 enemyShips.get(i).render(gc);
             }
-
         }
     }));
 
