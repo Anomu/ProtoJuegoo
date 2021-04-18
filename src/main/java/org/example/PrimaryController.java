@@ -21,7 +21,6 @@ public class PrimaryController implements Initializable {
     private GraphicsContext gc;
     private CombatShip combatShip;
     private ArrayList<EnemyShip> enemyShips = new ArrayList<>();
-    //list de bullets
     private ArrayList<Bullet> bullets = new ArrayList<>();
     private ArrayList<EnemyBullet> enemybullets = new ArrayList<>();
     private Image space;
@@ -66,7 +65,7 @@ public class PrimaryController implements Initializable {
             for (int i = 0; i < enemyShips.size(); i++) {
                 double random = Math.random();
                 System.out.println(random);
-                if(random > 0.9993 && enemybullets.size() <= 2) {
+                if(random<0.9 && enemybullets.size() <= 2) {
                     enemybullets.add(new EnemyBullet(new Image("PNG/bullet.png"),
                             enemyShips.get(i).getPosX() + (enemyShips.get(i).getWidth() / 2.65),
                             enemyShips.get(i).getPosY()));
@@ -124,7 +123,5 @@ public class PrimaryController implements Initializable {
             }
             System.out.println(keyEvent.getCode().toString());
         });
-
-
     }
 }
