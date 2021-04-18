@@ -64,12 +64,12 @@ public class PrimaryController implements Initializable {
 
             for (int i = 0; i < enemyShips.size(); i++) {
                 double random = Math.random();
-                System.out.println(random);
-                if(random<0.9 && enemybullets.size() <= 2) {
+                //System.out.println(random);
+                if(random>0.9993 && enemybullets.size() <= 2) {
                     enemybullets.add(new EnemyBullet(new Image("PNG/bullet.png"),
                             enemyShips.get(i).getPosX() + (enemyShips.get(i).getWidth() / 2.65),
                             enemyShips.get(i).getPosY()));
-                    System.out.println("genera 1 cosa");
+                    System.out.println("dispara el ship" + i);
                 }
             }
             if (enemybullets.size() > 0) {
