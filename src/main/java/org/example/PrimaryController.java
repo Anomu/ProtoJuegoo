@@ -29,7 +29,7 @@ public class PrimaryController implements Initializable {
     @FXML
     Canvas mainCanvas;
 
-    Timeline tl = new Timeline(new KeyFrame(Duration.seconds(0.005), new EventHandler<ActionEvent>() {
+    Timeline tl = new Timeline(new KeyFrame(Duration.seconds(0.007), new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
             gc.drawImage(space,0, 0, 900, 600);
@@ -75,10 +75,10 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         space = new Image("PNG/space.jpg");
-        combatShip = new CombatShip(new Image("PNG/combat_ship.png"));
+        combatShip = new CombatShip(new Image("PNG/combat_ship_v2.png"));
         int spacing = 0;
         for (int i = 0; i < 5; i++) {
-            enemyShips.add(new EnemyShip(new Image("PNG/enemy_ship.png"), 0+spacing, 0));
+            enemyShips.add(new EnemyShip(new Image("PNG/enemy_ship_v2.png"), 0+spacing, 0));
             spacing = spacing+150;
         }
         gc = mainCanvas.getGraphicsContext2D();
@@ -94,9 +94,11 @@ public class PrimaryController implements Initializable {
             combatShip.move(keyEvent.getCode().toString());
             if(keyEvent.getCode().toString().equals("SPACE")){
                 //crear nueva bullet y añadir al list
-                bullets.add(new Bullet(new Image("PNG/bullet.png"),
-                        combatShip.getPosX()+ (combatShip.getWidth()/2.65),
-                        combatShip.getPosY()));
+                if(bullets.size()==0) {
+                    bullets.add(new Bullet(new Image("PNG/bullet.png"),
+                            combatShip.getPosX() + (combatShip.getWidth() / 2.65),
+                            combatShip.getPosY()));
+                }
             }
             System.out.println(keyEvent.getCode().toString());
         });
