@@ -24,14 +24,16 @@ public class PrimaryController implements Initializable {
     private ArrayList<Bullet> bullets = new ArrayList<>();
     private ArrayList<EnemyBullet> enemybullets = new ArrayList<>();
     private Image space;
+    private boolean jugando = true;
 
     @FXML
     Canvas mainCanvas;
 
-    Timeline tl = new Timeline(new KeyFrame(Duration.seconds(0.007), new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent event) {
-            gc.drawImage(space,0, 0, 900, 600);
+        Timeline tl = new Timeline(new KeyFrame(Duration.seconds(0.007), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event){
+
+                    gc.drawImage(space, 0, 0, 900, 600);
 
             //player
             combatShip.render(gc);
@@ -77,13 +79,17 @@ public class PrimaryController implements Initializable {
                     enemybullets.get(i).move();
                     enemybullets.get(i).render(gc);
 
-                    if(enemybullets.get(i).getPosY()>= 500){
-                        enemybullets.remove(i);
-                        System.out.println("removed");
-                        break;
+                            if (enemybullets.get(i).getPosY() >= 500) {
+                                enemybullets.remove(i);
+                                System.out.println("removed");
+                                break;
+                            }
+
+                            if (enemybullets.get(i).getBoundry().intersects(combatShip.getBoundry())) {
+                                jugando = false;
+                            }
+                        }
                     }
-                }
-            }
 
             //NPCs
             for (int i = 0; i < enemyShips.size(); i++) {
