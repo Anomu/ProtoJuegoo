@@ -35,49 +35,50 @@ public class PrimaryController implements Initializable {
 
                     gc.drawImage(space, 0, 0, 900, 600);
 
-            //player
-            combatShip.render(gc);
+                    //player
+                    combatShip.render(gc);
 
-            //Bullet
-            //for recorriendo list haciendo lo de abajo
-            if(bullets.size()>0) {
-                for (int i = 0; i < bullets.size(); i++) {
-                    bullets.get(i).move();
-                    bullets.get(i).render(gc);
+                    //Bullet
+                    //for recorriendo list haciendo lo de abajo
+                    if (bullets.size() > 0) {
+                        for (int i = 0; i < bullets.size(); i++) {
+                            bullets.get(i).move();
+                            bullets.get(i).render(gc);
 
-                    if(bullets.get(i).getPosY()<=0){
-                        bullets.remove(i);
-                        System.out.println("removed");
-                        break;
-                    }
+                            if (bullets.get(i).getPosY() <= 0) {
+                                bullets.remove(i);
+                                System.out.println("removed");
+                                break;
+                            }
 
-                    for (int j = 0; j < enemyShips.size(); j++) {
-                        if (bullets.get(i).getBoundry().intersects(enemyShips.get(j).getBoundry())) {
-                            System.out.println("de locos");
-                            System.out.println("nave " + j);
-                            enemyShips.remove(j);
-                            bullets.remove(i);
-                            break;
+                            for (int j = 0; j < enemyShips.size(); j++) {
+                                if (bullets.get(i).getBoundry().intersects(enemyShips.get(j).getBoundry())) {
+                                    System.out.println("de locos");
+                                    System.out.println("nave " + j);
+                                    enemyShips.remove(j);
+                                    bullets.remove(i);
+                                    break;
 
+                                }
+                            }
                         }
                     }
-                }
-            }
 
-            for (int i = 0; i < enemyShips.size(); i++) {
-                double random = Math.random();
-                //System.out.println(random);
-                if(random>0.9993 && enemybullets.size() <= 2) {
-                    enemybullets.add(new EnemyBullet(new Image("PNG/bullet.png"),
-                            enemyShips.get(i).getPosX() + (enemyShips.get(i).getWidth() / 2.65),
-                            enemyShips.get(i).getPosY()));
-                    System.out.println("dispara el ship" + i);
-                }
-            }
-            if (enemybullets.size() > 0) {
-                for (int i = 0; i < enemybullets.size(); i++) {
-                    enemybullets.get(i).move();
-                    enemybullets.get(i).render(gc);
+
+                    for (int i = 0; i < enemyShips.size(); i++) {
+                        double random = Math.random();
+                        //System.out.println(random);
+                        if (random > 0.9993 && enemybullets.size() <= 2) {
+                            enemybullets.add(new EnemyBullet(new Image("PNG/bullet.png"),
+                                    enemyShips.get(i).getPosX() + (enemyShips.get(i).getWidth() / 2.65),
+                                    enemyShips.get(i).getPosY()));
+                            System.out.println("dispara el ship" + i);
+                        }
+                    }
+                    if (enemybullets.size() > 0) {
+                        for (int i = 0; i < enemybullets.size(); i++) {
+                            enemybullets.get(i).move();
+                            enemybullets.get(i).render(gc);
 
                             if (enemybullets.get(i).getPosY() >= 500) {
                                 enemybullets.remove(i);
@@ -91,13 +92,13 @@ public class PrimaryController implements Initializable {
                         }
                     }
 
-            //NPCs
-            for (int i = 0; i < enemyShips.size(); i++) {
-                enemyShips.get(i).move();
-                enemyShips.get(i).render(gc);
-            }
-        }
-    }));
+                    //NPCs
+                    for (int i = 0; i < enemyShips.size(); i++) {
+                        enemyShips.get(i).move();
+                        enemyShips.get(i).render(gc);
+                    }
+                }
+        }));
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -106,7 +107,7 @@ public class PrimaryController implements Initializable {
         int spacing = 0;
         for (int i = 0; i < 5; i++) {
             enemyShips.add(new EnemyShip(new Image("PNG/enemy_ship_v2.png"), 0+spacing, 0));
-            spacing = spacing+150;
+            spacing = spacing+85;
         }
         gc = mainCanvas.getGraphicsContext2D();
         combatShip.render(gc);
