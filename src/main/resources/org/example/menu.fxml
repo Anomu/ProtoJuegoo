@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="262.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Menu">
+   <children>
+      <Label layoutX="179.0" layoutY="33.0" text="Has perdut!">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="191.0" layoutY="114.0" text="Reiniciar?">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Button fx:id="Reiniciar" layoutX="75.0" layoutY="162.0" mnemonicParsing="false" onAction="#onReiniciar" prefHeight="57.0" prefWidth="116.0" text="Reiniciar">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="Sortir" layoutX="295.0" layoutY="162.0" mnemonicParsing="false" onAction="#onSortir" prefHeight="57.0" prefWidth="116.0" text="Sortir">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label fx:id="puntsTens" layoutX="96.0" layoutY="73.0" text="Has tret un total de 0 punts">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
