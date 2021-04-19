@@ -48,6 +48,7 @@ public class PrimaryController implements Initializable {
 
                     //Bullet
                     //for recorriendo list haciendo lo de abajo
+                boolean salirbucle = false;
                     if (bullets.size() > 0) {
                         for (int i = 0; i < bullets.size(); i++) {
                             bullets.get(i).move();
@@ -66,9 +67,14 @@ public class PrimaryController implements Initializable {
                                     enemyShips.remove(j);
                                     bullets.remove(i);
                                     puntuacio++;
+                                    salirbucle = true;
                                     break;
 
                                 }
+                            }
+
+                            if (salirbucle) {
+                                break;
                             }
 
                             //destroy enemy bullet
