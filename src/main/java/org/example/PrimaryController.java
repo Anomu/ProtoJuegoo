@@ -60,6 +60,10 @@ public class PrimaryController implements Initializable {
                                 break;
                             }
 
+                            if (salirbucle) {
+                                break;
+                            }
+
                             //kill enemy
                             for (int j = 0; j < enemyShips.size(); j++) {
                                 if (bullets.get(i).getBoundry().intersects(enemyShips.get(j).getBoundry())) {
@@ -68,6 +72,11 @@ public class PrimaryController implements Initializable {
                                     bullets.remove(i);
                                     puntuacio++;
                                     salirbucle = true;
+
+                                    if (enemyShips.size() == 0) {
+                                        level++;
+                                        startLevel(level);
+                                    }
                                     break;
 
                                 }
@@ -129,11 +138,7 @@ public class PrimaryController implements Initializable {
                         enemyShips.get(i).render(gc);
                     }
 
-                    if (enemyShips.size() < 1 && vivo) {
-                        level++;
-                        startLevel(level);
-                        System.out.println("level 2");
-                    }
+                System.out.println(level);
             }
         }));
 
@@ -142,6 +147,7 @@ public class PrimaryController implements Initializable {
         enemyShips.removeAll(enemyShips);
         bullets.removeAll(bullets);
         enemybullets.removeAll(enemybullets);
+        level = 1;
 
         App.showMenu("menu");
 
