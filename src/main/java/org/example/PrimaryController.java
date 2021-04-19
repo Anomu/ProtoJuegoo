@@ -59,12 +59,24 @@ public class PrimaryController implements Initializable {
                                 break;
                             }
 
+                            //kill enemy
                             for (int j = 0; j < enemyShips.size(); j++) {
                                 if (bullets.get(i).getBoundry().intersects(enemyShips.get(j).getBoundry())) {
                                     //System.out.println("nave " + j);
                                     enemyShips.remove(j);
                                     bullets.remove(i);
                                     puntuacio++;
+                                    break;
+
+                                }
+                            }
+
+                            //destroy enemy bullet
+                            for (int j = 0; j < enemybullets.size(); j++) {
+                                if (bullets.get(i).getBoundry().intersects(enemybullets.get(j).getBoundry())) {
+                                    //System.out.println("nave " + j);
+                                    enemybullets.remove(j);
+                                    bullets.remove(i);
                                     break;
 
                                 }
