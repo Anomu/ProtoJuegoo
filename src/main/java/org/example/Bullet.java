@@ -10,7 +10,7 @@ public class Bullet extends Sprite{
         super(image);
         setPosX(posX);
         setPosY(posY);
-        velY = 3.00f;
+        velY = 5.50f;
     }
 
     @Override
