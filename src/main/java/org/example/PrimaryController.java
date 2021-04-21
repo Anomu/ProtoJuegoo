@@ -137,8 +137,6 @@ public class PrimaryController implements Initializable {
                         enemyShips.get(i).move();
                         enemyShips.get(i).render(gc);
                     }
-
-                System.out.println(level);
             }
         }));
 
