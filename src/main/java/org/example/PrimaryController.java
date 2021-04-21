@@ -104,7 +104,7 @@ public class PrimaryController implements Initializable {
                         double random = Math.random();
                         //System.out.println(random);
                         if (random > dificultat && enemybullets.size() <= 2) {
-                            enemybullets.add(new EnemyBullet(new Image("PNG/bullet.png"),
+                            enemybullets.add(new EnemyBullet(new Image("PNG/enemy_shot.png"),
                                     enemyShips.get(i).getPosX() + (enemyShips.get(i).getWidth() / 2.65),
                                     enemyShips.get(i).getPosY()));
                             System.out.println("dispara el ship" + i);
@@ -198,7 +198,7 @@ public class PrimaryController implements Initializable {
             if(keyEvent.getCode().toString().equals("SPACE")){
                 //crear nueva bullet y añadir al list
                 if(bullets.size()==0) {
-                    bullets.add(new Bullet(new Image("PNG/bullet.png"),
+                    bullets.add(new Bullet(new Image("PNG/allied_shot.png"),
                             combatShip.getPosX() + (combatShip.getWidth() / 2.65),
                             combatShip.getPosY()));
                 }
